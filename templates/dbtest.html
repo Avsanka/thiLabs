@@ -7,15 +7,58 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        {% for item in list %}
-            <div class="col-4"><p>{{item.name}} {{item.surname}}</p></div>
-            <div class="col-4"><p>{{item.email}}</p></div>
-            <div class="col-4"><p>{{item.content}}</p></div>
-        {% endfor %}
+{% if test2 %}
+    <div class="container mt-4">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Название</th>
+                    <th>Год</th>
+                    <th>Режиссер</th>
+                    <th>Длительность</th>
+                    <th>Рейтинг</th>
+                    <th>Страны</th>
+                    <th>Жанры</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for film in test2 %}
+                <tr>
+                    <td>{{ film.title }}</td>
+                    <td>{{ film.year }}</td>
+                    <td>{{ film.director }}</td>
+                    <td>{{ film.duration_mins }} мин.</td>
+                    <td>{{ film.rating }}</td>
+                    <td>{{ film.countries  }}</td>
+                    <td>{{ film.genres  }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-</div>
-
+{% elif test1 %}
+<div class="container mt-4">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Дата и время</th>
+                    <th>Цена</th>
+                    <th>Фильм</th>
+                    <th>Зал</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for session in test1 %}
+                <tr>
+                    <td>{{ session.session_datetime }}</td>
+                    <td>{{ session.price }} ₽</td>
+                    <td>{{ session.title }}</td>
+                    <td>{{ session.hall_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
 </body>
 </html>
