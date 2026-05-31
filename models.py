@@ -29,6 +29,7 @@ class Film(Base):
     duration_mins: Mapped[int] = mapped_column(INTEGER(11), nullable=False)
     description: Mapped[str] = mapped_column(String(1000), nullable=False)
     rating: Mapped[Optional[decimal.Decimal]] = mapped_column(DECIMAL(10, 1))
+    img_url: Mapped[Optional[str]] = mapped_column(String(300))
 
     country: Mapped[list['Country']] = relationship('Country', secondary='film_country', back_populates='film')
     genre: Mapped[list['Genre']] = relationship('Genre', secondary='film_genre', back_populates='film')
@@ -75,7 +76,6 @@ t_film_country = Table(
     Index('ID_film', 'ID_film'),
     Index('film_country_pkfk', 'ID_country', 'ID_film')
 )
-
 
 
 t_film_genre = Table(
